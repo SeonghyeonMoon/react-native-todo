@@ -14,7 +14,9 @@ const App = () => {
   const loadTodos = async () => {
     try {
       const result = await AsyncStorage.getItem(STORAGE_KEY);
-      setTodos(result ? JSON.parse(result) : {});
+      if (result) {
+        setTodos(JSON.parse(result));
+      }
     } catch (e) {
       console.log(e);
     }
