@@ -7,7 +7,7 @@ const TodoItem = ({ id, text, deleteTodo }) => {
     <View style={styles.container}>
       <Text style={styles.text}>{text}</Text>
       <TouchableOpacity onPress={() => deleteTodo(id)}>
-        <Octicons name='trash' size={18} color='white' />
+        <Octicons name='trash' size={18} color={colors.white} />
       </TouchableOpacity>
     </View>
   );
