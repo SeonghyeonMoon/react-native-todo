@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { colors } from './colors';
 import { StatusBar } from 'expo-status-bar';
@@ -36,10 +36,22 @@ const App = () => {
   };
 
   const deleteTodo = async (id) => {
-    const newTodos = { ...todos };
-    delete newTodos[id];
-    setTodos(newTodos);
-    await saveTodos(newTodos);
+    Alert.alert('Delete Todo', 'Are you sure?', [
+      {
+        text: 'Cancel',
+        style: 'cancel',
+      },
+      {
+        text: 'Delete',
+        style: 'destructive',
+        onPress: async () => {
+          const newTodos = { ...todos };
+          delete newTodos[id];
+          setTodos(newTodos);
+          await saveTodos(newTodos);
+        },
+      },
+    ]);
   };
 
   useEffect(() => {
