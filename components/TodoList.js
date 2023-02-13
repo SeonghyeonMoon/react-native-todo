@@ -1,11 +1,11 @@
 import { ScrollView } from 'react-native';
 import TodoItem from './TodoItem';
 
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos, deleteTodo }) => {
   return (
     <ScrollView>
       {Object.keys(todos).map((id) => (
-        <TodoItem key={id} id={id} {...todos[id]} />
+        <TodoItem key={id} id={id} deleteTodo={deleteTodo} {...todos[id]} />
       ))}
     </ScrollView>
   );
